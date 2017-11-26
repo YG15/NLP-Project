@@ -10,11 +10,15 @@
 import random as rnd
 
 def text_splitter(text):
+
+    #get the text length
     text_len = len(text.split())
 
-    if text_len<150:
+    #test that the text is long enough
+    if text_len<5000:
         return ("Text too short")
 
+    #pick a text split which is longer than 5000 words
     dif=0
     while dif <5000 :
         indeces = [rnd.randint(0,text_len),rnd.randint(0, text_len)]
@@ -25,6 +29,7 @@ def text_splitter(text):
     split_list = text.split()[ind_start:ind_end]
     split_text = ' '.join(str(e) for e in split_list)
 
+    #post split text length
     print ("Split text length is: ", len(split_text.split()))
 
     return (split_text)

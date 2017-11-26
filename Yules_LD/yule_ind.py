@@ -81,9 +81,9 @@ if __name__ == "__main__":
     iters= 15 #number of trial for each text
 
 
-    for txt in corpus_num:
+    for txt in corpus_num: #iterarte over corpuses
         text = gts.get_scrap(txt)
-        for iter in range(iters):
+        for iter in range(iters): #measure the Yule's LD metrics
             split_text=ts.text_splitter(text)
             yules = yules_ind(split_text)
             print('The text which starts with the words: \"', split_text[0:20], '\", has a Yule\'s K inex of ', yules[0],
