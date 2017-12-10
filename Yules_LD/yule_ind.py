@@ -2,15 +2,15 @@
 # Name: yules_ind
 # Author: Yonathna Guttel
 # Purpose: computes Yule's index which measure Lexical Diversity (LD)
-# Arguments: a text string
+# Arguments: A text string
 # Returning: Its Yule indecies
-# date: 26.11.2017
-# Version: 3
+# date: 10.12.2017
+# Version: 4
 ##############################################
 
 def yules_ind(entry):
     """
-    This function recieves a string (text) and computes its Yule's K and I
+    This function receives a string (text) and computes its Yule's K and I
     Indices.
     the function is partialy based on Swizec Teller's blog post:
     "https://swizec.com/blog/measuring-vocabulary-richness-with-python/swizec/2528"
@@ -79,12 +79,13 @@ if __name__ == "__main__":
 
     corpus_num = [460,2003] #can be a single number too, but it has to be in a list
     iters= 15 #number of trial for each text
+    sp_range = 5000 # length of text to measure LD
 
 
     for txt in corpus_num: #iterarte over corpuses
         text = gts.get_scrap(txt)
         for iter in range(iters): #measure the Yule's LD metrics
-            split_text=ts.text_splitter(text)
+            split_text=ts.text_splitter(text, sp_range)
             yules = yules_ind(split_text)
-            print('The text which starts with the words: \"', split_text[0:20], '\", has a Yule\'s K inex of ', yules[0],
+            print('The text which starts with the words: \"', ' '.join(str(e) for e in split_text.split(' ')[0:10]), '\", has a Yule\'s K inex of ', yules[0],
                   ", and a Yule's I index of ", yules[1])
