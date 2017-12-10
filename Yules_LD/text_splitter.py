@@ -24,11 +24,12 @@ def text_splitter(text, sp_range=1000):
     if (text_len - sp_range) < 0:
         return ("Range too long")
 
-    #pick a text split which is longer than 5000 words
+    #Set split indecies were the split start location is at least 1 words frather the the text end location than the range length and
+    # the end point is the start point + range length so we get a range which is equal to the desired range but cannot exceede the text end
     ind_start = rnd.randint(0,text_len-sp_range)
     ind_end = ind_start+sp_range
 
-
+    # The spliting and rejoining of the splitted text
     split_list = text.split()[ind_start:ind_end]
     split_text = ' '.join(str(e) for e in split_list)
 
